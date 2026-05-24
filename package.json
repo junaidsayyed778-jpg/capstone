@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@kubernetes/client-node": "^1.4.0"
+    "@kubernetes/client-node": "^1.4.0",
+    "nodemon": "^3.1.14"
   }
 }

@@ -4,6 +4,18 @@ import morgan from "morgan";
 const app = express()
 app.use(morgan("combined"));
 
+app.get("/api/status/health", (req, res) => {
+    res.status(200).json({
+        status: "ok"
+    })
+})
+
+app.get("/api/status/ready", (req, res) => {
+    res.status(200).json({
+        status: "ready"
+    })
+})
+
 app.use((req, res, next) => {
     const host = req.headers.host;
     const sandboxId = host.split(".")[0];
