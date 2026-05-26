@@ -16,7 +16,7 @@ export async function createPod(sandboxId) {
           emptyDir: {},
         },
       ],
-      initContainer: [
+      initContainers: [
         {
           name: "init-container",
           image: "template",

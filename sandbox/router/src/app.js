@@ -52,6 +52,7 @@ app.use((req, res, next) => {
   const sandboxId = host.split(".")[0];
 
   if (host.split("."[1] === "agent")) {
+    return getAgentProxy(sandboxId)(req, res, next);
   } else if (host.split(".")[1] === "preview") {
     return getProxy(sandboxId)(req, res, next);
   }
