@@ -1,8 +1,8 @@
 import express from 'express';
 import morgan from "morgan"
 import { v4 as uuid } from "uuid"
-import { createPod } from "../../template/src/kubernetes/pods.js"
-import { createService } from "../../template/src/kubernetes/service.js"
+import { createPod } from "./kubernetes/pods.js"
+import { createService } from "./kubernetes/service.js"
 
 const app = express()
 

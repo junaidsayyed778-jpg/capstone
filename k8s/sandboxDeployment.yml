@@ -22,8 +22,8 @@ spec:
       serviceAccountName: resource-manager
       containers:
       - name: main-sandbox-container
-        image: sandbox-latest
-        imagePullPolicy: IfNotPresent
+        image: sandbox:latest
+        imagePullPolicy: Never
         resources:
           limits:
             cpu: "500m"
@@ -39,7 +39,7 @@ spec:
           timeoutSeconds: 10
         readinessProbe:
           httpGet:
-            path: /_status/healthz
+            path:  /api/sandbox/ready
             port: 5000
           initialDelaySeconds: 30
           timeoutSeconds: 10
