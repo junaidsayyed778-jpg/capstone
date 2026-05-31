@@ -13,6 +13,6 @@ app.get("/api/status/health", (req, res) => {
   });
 });
 
-app.use("/api/ai/agent", agentRouter)
+app.use("/api/ai", agentRouter)
 
 export default app;

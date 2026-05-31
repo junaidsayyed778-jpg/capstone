@@ -8,7 +8,7 @@ import { listFiles, readfiles, updateFiles } from "./tools.js";
 
 const model = new ChatMistralAI({
   model: "mistral-medium-latest",
-  apiKey: process.env.MISTRALAPI_KEY,
+  apiKey: process.env. MISTRAL_API_KEY,
 });
 
 const agent = createAgent({
