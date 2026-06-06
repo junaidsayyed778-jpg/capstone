@@ -21,7 +21,7 @@ build:
       docker:
         dockerfile: Dockerfile
     - image: sandbox
-      context: sandbox/sandbox
+      context: sandbox/server
       docker:
         dockerfile: Dockerfile
     - image: template

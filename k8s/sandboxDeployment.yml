@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name:  sandbox-deployment
   labels:
-    name:  sandbox-deployment
+    app:  sandbox-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: sandbox
+      app: sandbox
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        name: sandbox
+        app: sandbox
     spec:
       serviceAccountName: resource-manager
       containers:

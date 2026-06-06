@@ -3,15 +3,23 @@ import agent from "../agents/codeAgent.js"
 
 const agentRouter = Router();
 
-agentRouter.post("/invoke", (req, res) => {
+agentRouter.post("/invoke", async(req, res) => {
     try {
-        const { messages} = req.body
-        const response = await agent.invoke({ messages: [{
-            role: "user",
-            content: message
-        }] })
+        const { messages, projectId } = req.body
+        const response = await agent.invoke(
+            {
+                messages: [{
+                    role: "user",
+                    content: message
+                }]
+            }, {
+            context: {
+                projectId
+            }
+        })
         res.json({ response })
     } catch (error) {
+        console.error("Error invoking agent:", error);
         res.status(500).json({ error: error.message })
     }
 })
