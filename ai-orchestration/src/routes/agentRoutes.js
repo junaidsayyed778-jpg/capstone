@@ -2,25 +2,30 @@ import { Router } from "express";
 import agent from "../agents/codeAgent.js"
 
 const agentRouter = Router();
+agentRouter.post("/invoke", async (req, res) => {
+  try {
+    const { messages, projectId } = req.body;
 
-agentRouter.post("/invoke", async(req, res) => {
-    try {
-        const { messages, projectId } = req.body
-        const response = await agent.invoke(
-            {
-                messages: [{
-                    role: "user",
-                    content: message
-                }]
-            }, {
-            context: {
-                projectId
-            }
-        })
-        res.json({ response })
-    } catch (error) {
-        console.error("Error invoking agent:", error);
-        res.status(500).json({ error: error.message })
-    }
-})
+    const response = await agent.invoke(
+      {
+        messages: [
+          {
+            role: "user",
+            content: messages,
+          },
+        ],
+      },
+      {
+        context: {
+          projectId,
+        },
+      }
+    );
+
+    res.json({ response });
+  } catch (error) {
+    console.error("Error invoking agent:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
 export default agentRouter;
