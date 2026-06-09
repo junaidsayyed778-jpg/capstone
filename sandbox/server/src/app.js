@@ -3,6 +3,7 @@ import morgan from "morgan"
 import { v4 as uuid } from "uuid"
 import { createPod } from "./kubernetes/pods.js"
 import { createService } from "./kubernetes/service.js"
+import { isKubernetesConfigured } from "./kubernetes/config.js"
 
 const app = express()
 
@@ -26,6 +27,13 @@ app.get("/api/sandbox/ready", (req, res)=>{
 })
 
 app.post("/api/sandbox/start", async (req, res) => {
+    if (!isKubernetesConfigured) {
+        return res.status(503).json({
+            message: "Kubernetes is not configured for sandbox provisioning on this machine.",
+            status: "unavailable"
+        })
+    }
+
     const sandboxId = uuid()
 
     await Promise.all([

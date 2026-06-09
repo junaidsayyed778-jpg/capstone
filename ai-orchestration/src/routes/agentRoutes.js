@@ -4,14 +4,15 @@ import agent from "../agents/codeAgent.js"
 const agentRouter = Router();
 agentRouter.post("/invoke", async (req, res) => {
   try {
-    const { messages, projectId } = req.body;
+    const { messages, message, projectId } = req.body;
+    const userMessage = messages ?? message;
 
     const response = await agent.invoke(
       {
         messages: [
           {
             role: "user",
-            content: messages,
+            content: userMessage,
           },
         ],
       },
@@ -22,7 +23,14 @@ agentRouter.post("/invoke", async (req, res) => {
       }
     );
 
-    res.json({ response });
+    const reply =
+      response?.content ??
+      response?.output ??
+      response?.messages?.at?.(-1)?.content ??
+      response?.messages?.at?.(-1)?.text ??
+      response;
+
+    res.json({ reply, response });
   } catch (error) {
     console.error("Error invoking agent:", error);
     res.status(500).json({ error: error.message });

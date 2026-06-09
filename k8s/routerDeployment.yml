@@ -26,7 +26,7 @@ spec:
             memory: "500M"
         livenessProbe:
           httpGet:
-            path: /api/sandbox/health
+            path: /api/status/health
             port: 3000
           initialDelaySeconds: 90
           timeoutSeconds: 10
