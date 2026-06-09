@@ -30,14 +30,14 @@ export default function App() {
       const data = responseText ? JSON.parse(responseText) : {}
       
       if (response.ok) {
-        setPreviewUrl(data.previewUrl || 'http://localhost:5173') // Fallback provided just in case
+        setPreviewUrl(data.previewUrl || '') // Don't load own app URL as fallback
       } else {
         throw new Error(data.error || data.message || `Sandbox request failed with status ${response.status}`)
       }
     } catch (err) {
       console.error('Error starting sandbox:', err)
       setTerminalLogs(prev => [...prev, `Failed to reach API endpoint at ${API_BASE_URL || '/api'}.`])
-      setPreviewUrl('http://localhost:5173')
+      setPreviewUrl('') // Setting to empty so the placeholder renders
     } finally {
       setIsStarting(false)
       setIsSandboxStarted(true)
