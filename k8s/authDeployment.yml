@@ -41,7 +41,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: database
-              key: KEY     
+              key: MONGO_URI     
 
         - name: GOOGLE_CLIENT_ID
           valueFrom:

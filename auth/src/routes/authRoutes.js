@@ -1,6 +1,7 @@
 import { Router } from "express";
-import User from "../models/User.js";
+import User from "../models/userModel.js";
 import passport from "passport";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.get(
     try {
       const { id, displayName, emails } = req.user;
       let user = await User.findOne({ googleId: id });
+
       if (!user) {
         user = new User({
           googleId: id,
@@ -26,15 +28,16 @@ router.get(
           email: emails?.[0]?.value,
           avatar: req.user.photos?.[0]?.value,
         });
+
         await user.save();
-
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-          expiresIn: "1d",
-        });
-
-        res.cookie("token", token, { httpOnly: true });
-        res.redirect("/");
       }
+
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      });
+
+      res.cookie("token", token, { httpOnly: true });
+      res.redirect("/");
     } catch (error) {
       console.error("Error during Google authentication:", error);
     }

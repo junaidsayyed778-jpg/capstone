@@ -36,10 +36,19 @@ app.post("/api/sandbox/start", async (req, res) => {
 
     const sandboxId = uuid()
 
-    await Promise.all([
-        createPod(sandboxId),
-        createService(sandboxId)
-    ])
+    try {
+        await Promise.all([
+            createPod(sandboxId),
+            createService(sandboxId)
+        ])
+    } catch (error) {
+        console.error("Error creating Kubernetes resources:", error);
+        return res.status(500).json({
+            message: "Failed to create sandbox environment",
+            status: "error",
+            error: error.message || error.toString()
+        })
+    }
 
     return res.status(201).json({
         message: "Sandbox environment created successfully",

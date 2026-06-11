@@ -1,0 +1,65 @@
+
+> server@1.0.0 dev
+> nodemon -L server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+Current cluster: {
+  name: 'inCluster',
+  caFile: '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt',
+  server: 'https://10.96.0.1:443',
+  skipTLSVerify: false
+}
+Current context: inClusterContext
+Sandbox API is running on port 3000
+[0mGET /api/sandbox/ready [32m200[0m 8.274 ms - 51[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.068 ms - 51[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.766 ms - 51[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.590 ms - 51[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.612 ms - 51[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.444 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.355 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.406 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.715 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.370 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.779 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.344 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.481 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.723 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.244 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.432 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.588 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.544 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.925 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.471 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.395 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.233 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.546 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.534 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.415 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.636 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.731 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.437 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.500 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.507 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 24.541 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.587 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 16.542 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.691 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 2.007 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.762 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 1.174 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.223 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 1.713 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.530 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 1.525 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 1.005 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 1.493 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 2.879 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.742 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.584 ms - 51[0m
+[0mGET /api/sandbox/health [32m200[0m 0.406 ms - 50[0m
+[0mGET /api/sandbox/ready [32m200[0m 0.842 ms - 51[0m
