@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import mongoose from "mongoose";
 import cookies from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 const app = express();
