@@ -56,4 +56,3 @@ manifests:
     - k8s/routerService.yml
     - k8s/ingress.yml
     - k8s/rbac.yml
-    - k8s/secrets.yml
