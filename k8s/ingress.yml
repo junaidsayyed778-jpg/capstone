@@ -2,44 +2,40 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: codespace-ingress
-  labels:
-    app.kubernetes.io/name: codespace-ingress
 spec:
   ingressClassName: nginx
   rules:
     - http:
         paths:
-          - pathType: Prefix
-            path: "/api/sandbox"
+          - path: /api/sandbox
+            pathType: Prefix
             backend:
               service:
                 name: sandbox-service
                 port:
                   number: 80
-    - http:
-        paths:
-          - pathType: Prefix
-            path: "/api/ai"
+
+          - path: /api/ai
+            pathType: Prefix
             backend:
               service:
                 name: ai-service
                 port:
-                  number: 80  
-    - http:
-        paths:
-          - pathType: Prefix
-            path: "/api/auth"
+                  number: 80
+
+          - path: /api/auth
+            pathType: Prefix
             backend:
               service:
                 name: auth-service
                 port:
-                  number: 80     
-                                        
+                  number: 80
+
     - host: "*.preview.localhost"
       http:
         paths:
-          - pathType: Prefix  
-            path: "/"
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: router-service
@@ -49,8 +45,8 @@ spec:
     - host: "*.agent.localhost"
       http:
         paths:
-          - pathType: Prefix  
-            path: "/"
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: router-service

@@ -6,7 +6,7 @@ metadata:
 
 spec:
   selector:
-    app: sandbox
+    app: sandbox-api
 
   type: ClusterIP
 
