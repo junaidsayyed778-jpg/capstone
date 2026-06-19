@@ -32,7 +32,7 @@ spec:
 
           image: sandbox
 
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 
           ports:
             - name: http
@@ -45,6 +45,18 @@ spec:
                 secretKeyRef:
                   name: database
                   key: REDIS_URL
+
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt
+                  key: JWT_SECRET   
+
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: SANDBOX             
 
 
           resources:

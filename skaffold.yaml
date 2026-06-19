@@ -2,35 +2,27 @@ apiVersion: skaffold/v4beta13
 kind: Config
 
 build:
+  local:
+    push: false
+
   tagPolicy:
-    sha256: {} 
+    sha256: {}
 
   artifacts:
-
     - image: ai-orchestration
       context: ai-orchestration
       docker:
         dockerfile: Dockerfile
-      sync:
-        infer:
-          - "src/**"
 
     - image: auth
       context: auth
       docker:
         dockerfile: Dockerfile
-      sync:
-        infer:
-          - "src/**"
 
     - image: notification
       context: notification
       docker:
         dockerfile: Dockerfile
-      sync:
-        infer:
-          - "src/**"
-     
 
     - image: agent
       context: sandbox/agent
@@ -52,18 +44,29 @@ build:
       docker:
         dockerfile: Dockerfile
 
-
 manifests:
   rawYaml:
+    # Updated: Replaced k8s/secrets.yml with the 4 individual secret files
+    - k8s/database-secret.yml
+    - k8s/jwt-secret.yml
+    - k8s/google-secret.yml
+    - k8s/ai-secret.yml
+    
+    - k8s/rbac.yml
+
     - k8s/ai-deployment.yml
     - k8s/ai-service.yml
+
     - k8s/authDeployment.yml
     - k8s/authService.yml
-    - k8s/sandboxDeployment.yml
-    - k8s/sandboxService.yml
-    - k8s/routerDeployment.yml
-    - k8s/routerService.yml
-    - k8s/ingress.yml
-    - k8s/rbac.yml
+
     - k8s/notification-deployment.yml
     - k8s/notification-service.yml
+
+    - k8s/routerDeployment.yml
+    - k8s/routerService.yml
+
+    - k8s/sandboxDeployment.yml
+    - k8s/sandboxService.yml
+
+    - k8s/ingress.yml
