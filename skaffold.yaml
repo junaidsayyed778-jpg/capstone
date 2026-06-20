@@ -44,14 +44,18 @@ build:
       docker:
         dockerfile: Dockerfile
 
+    - image: sync-agent
+      context: sandbox/sync-agent
+      docker:
+        dockerfile: Dockerfile
+
 manifests:
   rawYaml:
-    # Updated: Replaced k8s/secrets.yml with the 4 individual secret files
     - k8s/database-secret.yml
     - k8s/jwt-secret.yml
     - k8s/google-secret.yml
     - k8s/ai-secret.yml
-    
+    - k8s/aws-secret.yml
     - k8s/rbac.yml
 
     - k8s/ai-deployment.yml
@@ -70,3 +74,5 @@ manifests:
     - k8s/sandboxService.yml
 
     - k8s/ingress.yml
+    
+    

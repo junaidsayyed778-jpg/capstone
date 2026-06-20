@@ -5,3 +5,4 @@ k8s/database-secret.yml
 k8s/jwt-secret.yml
 k8s/google-secret.yml
 k8s/ai-secret.yml
+k8s/aws-secret.yml

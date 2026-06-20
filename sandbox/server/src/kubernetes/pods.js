@@ -1,7 +1,11 @@
 import { k8sCoreV1Api } from "./config.js";
 
-export async function createPod(sandboxId) {
+// 1. Added `projectId` to the function parameters
+export async function createPod(sandboxId, projectId) {
   const podManifest = {
+    // 2. Added required apiVersion and kind for the Kubernetes API
+    apiVersion: "v1",
+    kind: "Pod",
     metadata: {
       name: `sandbox-${sandboxId}`,
       labels: {
@@ -48,6 +52,40 @@ export async function createPod(sandboxId) {
             {
               name: "workspace-volume",
               mountPath: "/workspace",
+            },
+          ],
+          // 3. Cleaned up the env array and ensured PROJECT_ID is a string
+          env: [
+            {
+              name: "PROJECT_ID",
+              value: String(projectId), // Kubernetes requires env values to be strings
+            },
+            {
+              name: "AWS_ACCESS_KEY_ID",
+              valueFrom: {
+                secretKeyRef: {
+                  name: "aws",
+                  key: "AWS_ACCESS_KEY_ID",
+                },
+              },
+            },
+            {
+              name: "AWS_SECRET_ACCESS_KEY",
+              valueFrom: {
+                secretKeyRef: {
+                  name: "aws",
+                  key: "AWS_SECRET_ACCESS_KEY",
+                },
+              },
+            },
+            {
+              name: "AWS_REGION",
+              valueFrom: {
+                secretKeyRef: {
+                  name: "aws",
+                  key: "AWS_REGION",
+                },
+              },
             },
           ],
         },
